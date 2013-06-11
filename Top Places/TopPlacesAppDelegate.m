@@ -7,21 +7,29 @@
 //
 
 #import "TopPlacesAppDelegate.h"
-
-#import "TopPlacesViewController.h"
+#import "TopPlacesFlickrTableViewController.h"
+#import "FlickrFetcher.h"
+#import "RecentListTableViewController.h"
 
 @implementation TopPlacesAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    self.tabBarController = [[UITabBarController alloc] init];    // Override point for customization after application launch.
+    UINavigationController *navConMain;
+    UINavigationController *navConRecent;
+
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[TopPlacesViewController alloc] initWithNibName:@"TopPlacesViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[TopPlacesViewController alloc] initWithNibName:@"TopPlacesViewController_iPad" bundle:nil];
-    }
-    self.window.rootViewController = self.viewController;
+        TopPlacesFlickrTableViewController *tpfTableViewController = [[TopPlacesFlickrTableViewController alloc]initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
+        RecentListTableViewController *recentListTableViewController = [[RecentListTableViewController alloc]initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];;
+
+      
+        navConRecent = [[UINavigationController alloc] initWithRootViewController:recentListTableViewController];
+        navConMain = [[UINavigationController alloc] initWithRootViewController:tpfTableViewController];
+    } 
+    self.tabBarController.viewControllers = @[navConMain,navConRecent];
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
