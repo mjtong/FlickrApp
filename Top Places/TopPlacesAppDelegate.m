@@ -31,6 +31,8 @@
     self.tabBarController.viewControllers = @[navConMain,navConRecent];
     navConMain.title = @"Top Places";
     navConRecent.title = @"Recent";
+    navConMain.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:nil];
+    navConRecent.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:nil];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
