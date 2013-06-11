@@ -9,6 +9,7 @@
 #import "PlacePicsFlickrPhotoTableViewController.h"
 #import "FlickrFetcher.h"
 #import "ImageViewController.h"
+#import "TopPlacesAppDelegate.h"
 @interface PlacePicsFlickrPhotoTableViewController ()
 
 @end
@@ -65,8 +66,12 @@
     [[self navigationController] pushViewController:imageViewController animated:YES];
 }
 
+
 - (NSString *)titleForRow:(NSUInteger)row
 {
+    if([self.photos[row][@"title"] isEqualToString:@""]){
+        return @"Unknown";
+    }
     return self.photos[row][@"title"]; // description because could be NSNull
 }
 
@@ -75,10 +80,11 @@
 
 - (NSString *)subtitleForRow:(NSUInteger)row
 {
- 
+    if([self.photos[row][@"description"][@"_content"] isEqualToString:@""]){
+        return @"Unknown";
+    }
     return self.photos[row][@"description"][@"_content"]; // description because could be NSNull
 }
-
 // loads up a table view cell with the title and owner of the photo at the given row in the Model
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

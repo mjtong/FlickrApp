@@ -7,7 +7,7 @@
 //
 
 #import "ImageViewController.h"
-
+#import "TopPlacesAppDelegate.h"
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
@@ -33,15 +33,24 @@
     if (self.scrollView) {
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
-        
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        if (image) {
-            self.scrollView.zoomScale = 1.0;
-            self.scrollView.contentSize = image.size;
-            self.imageView.image = image;
-            self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        }
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+             NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                           if (image) {
+                               self.scrollView.zoomScale = 1.0;
+                               self.scrollView.contentSize = image.size;
+                               self.imageView.image = image;
+                               self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                           }
+
+            });
+        });
+
+       
+     
     }
 }
 

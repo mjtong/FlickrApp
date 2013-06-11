@@ -8,6 +8,7 @@
 
 #import "TopPlacesFlickrTableViewController.h"
 #import "FlickrFetcher.h"
+#import "TopPlacesAppDelegate.h"
 @interface TopPlacesFlickrTableViewController ()
 @end
 
@@ -25,8 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.photos = [FlickrFetcher topPlaces];
+    self.title = @"Top Places";
     
+    self.photos = [FlickrFetcher topPlaces];
+
+   
+  
 }
 
 

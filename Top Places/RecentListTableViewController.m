@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     self.photos = [[NSUserDefaults standardUserDefaults] objectForKey:@"recent"];
+    self.title = @"Recent";
     NSLog(@"%@",self.photos);
     // Uncomment the following line to preserve selection between presentations.
      //self.clearsSelectionOnViewWillAppear = NO;
@@ -61,6 +62,9 @@
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
+    if([self.photos[row][@"title"] isEqualToString:@""]){
+        return @"Unknown";
+    }
     return self.photos[row][@"title"]; // description because could be NSNull
 }
 
@@ -69,7 +73,9 @@
 
 - (NSString *)subtitleForRow:(NSUInteger)row
 {
-    
+    if([self.photos[row][@"description"][@"_content"] isEqualToString:@""]){
+        return @"Unknown";
+    }
     return self.photos[row][@"description"][@"_content"]; // description because could be NSNull
 }
 

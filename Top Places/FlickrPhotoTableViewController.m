@@ -11,7 +11,7 @@
 #import "ImageViewController.h"
 #import "PlacePicsFlickrPhotoTableViewController.h"
 
-@implementation FlickrPhotoTableViewController
+@implementation FlickrPhotoTableViewController 
 // sets the Model
 // reloads the UITableView (since Model is changing)
 
@@ -45,17 +45,25 @@
 //  and gets the title out of it
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *photoItems = [FlickrFetcher photosAtPlace:self.photos[indexPath.row][@"place_id"]];
-    PlacePicsFlickrPhotoTableViewController *placePicsViewController = [[PlacePicsFlickrPhotoTableViewController alloc] initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *photoItems = [FlickrFetcher photosAtPlace:self.photos[indexPath.row][@"place_id"]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            PlacePicsFlickrPhotoTableViewController *placePicsViewController = [[PlacePicsFlickrPhotoTableViewController alloc] initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
+            
+            [placePicsViewController performSelector:@selector(setPhotos:) withObject:photoItems];
+            [placePicsViewController setTitle:[self titleForRow:indexPath.row]];
+            [[self navigationController] pushViewController:placePicsViewController animated:YES];
 
-    [placePicsViewController performSelector:@selector(setPhotos:) withObject:photoItems];
-    [placePicsViewController setTitle:[self titleForRow:indexPath.row]];
-  //  [NSUserDefaut]
-    [[self navigationController] pushViewController:placePicsViewController animated:YES];
-}
+        });
+    });
+ }
 
 - (NSString *)titleForRow:(NSUInteger)row
 {
+    NSLog(@"%@",self.photos[row][@"woe_name"]);
     return self.photos[row][@"woe_name"]; // description because could be NSNull
 }
 
