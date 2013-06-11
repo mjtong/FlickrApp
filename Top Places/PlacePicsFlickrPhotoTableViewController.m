@@ -51,6 +51,17 @@
     NSURL *url = [[NSURL alloc] initWithString:stringUrl];
     [imageViewController performSelector:@selector(setImageURL:) withObject:url];
     [imageViewController setTitle:[self titleForRow:indexPath.row]];
+    NSMutableArray *recentList = [[[NSUserDefaults standardUserDefaults] objectForKey:@"recent"]mutableCopy];
+    if(recentList){
+        if(![recentList containsObject:self.photos[indexPath.row]]){
+        [recentList addObject:self.photos[indexPath.row]];
+        }
+    }
+    else{
+        recentList = [[NSMutableArray alloc] init];
+        [recentList addObject:self.photos[indexPath.row]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:recentList forKey:@"recent"];
     [[self navigationController] pushViewController:imageViewController animated:YES];
 }
 

@@ -29,6 +29,8 @@
         navConMain = [[UINavigationController alloc] initWithRootViewController:tpfTableViewController];
     } 
     self.tabBarController.viewControllers = @[navConMain,navConRecent];
+    navConMain.title = @"Top Places";
+    navConRecent.title = @"Recent";
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

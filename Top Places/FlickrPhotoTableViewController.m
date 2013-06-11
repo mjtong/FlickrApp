@@ -47,9 +47,10 @@
 {
     NSArray *photoItems = [FlickrFetcher photosAtPlace:self.photos[indexPath.row][@"place_id"]];
     PlacePicsFlickrPhotoTableViewController *placePicsViewController = [[PlacePicsFlickrPhotoTableViewController alloc] initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
-    
+
     [placePicsViewController performSelector:@selector(setPhotos:) withObject:photoItems];
     [placePicsViewController setTitle:[self titleForRow:indexPath.row]];
+  //  [NSUserDefaut]
     [[self navigationController] pushViewController:placePicsViewController animated:YES];
 }
 
