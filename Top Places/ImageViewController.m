@@ -28,9 +28,11 @@
 // adjusts the scroll view's content size to fit the image
 // sets the image as the image view's image
 
+
 - (void)resetImage
 {
     if (self.scrollView) {
+        self.scrollView.delegate = self;
         self.scrollView.contentSize = CGSizeZero;
         self.imageView.image = nil;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -39,11 +41,19 @@
             UIImage *image = [[UIImage alloc] initWithData:imageData];
                        dispatch_async(dispatch_get_main_queue(), ^{
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                           
                            if (image) {
-                               self.scrollView.zoomScale = 1.0;
+                               NSLog(@"%g",self.scrollView.zoomScale);
                                self.scrollView.contentSize = image.size;
                                self.imageView.image = image;
                                self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                               CGFloat widthFactor = [self.scrollView bounds].size.width / image.size.width;
+                               CGFloat heightFactor = [self.scrollView bounds].size.height/ image.size.height;
+                               if( widthFactor > heightFactor){
+                                   self.scrollView.zoomScale = widthFactor;}
+                               else{
+                                   self.scrollView.zoomScale = heightFactor;
+                               }
                            }
 
             });
@@ -80,11 +90,13 @@
 {
     [super viewDidLoad];
     [self.scrollView addSubview:self.imageView];
-    self.scrollView.minimumZoomScale = 0.2;
+    self.scrollView.minimumZoomScale = 0.01;
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
     NSLog(@"Hello");
     [self resetImage];
+   // [self.scrollView setZoomScale:5.0f animated:NO];
+
 }
 
 @end

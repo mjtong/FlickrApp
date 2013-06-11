@@ -28,7 +28,7 @@
 		E5C6BED11766ABF300911686 /* FlickrPhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C6BECF1766ABF300911686 /* FlickrPhotoTableViewController.m */; };
 		E5C6BED61766B20F00911686 /* RecentListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C6BED41766B20E00911686 /* RecentListTableViewController.m */; };
 		E5C6BEDA1766B5E700911686 /* TopPlacesFlickrTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C6BED91766B5E700911686 /* TopPlacesFlickrTableViewController.m */; };
-		E5C6BEDC1766B71300911686 /* TopPlacesFlickerPhotoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C6BEDB1766B71300911686 /* TopPlacesFlickerPhotoTableViewController.xib */; };
+		E5C6BEDC1766B71300911686 /* GenericTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C6BEDB1766B71300911686 /* GenericTableView.xib */; };
 		E5C6BF1C1766CE4A00911686 /* PlacePicsFlickrPhotoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C6BF1B1766CE4A00911686 /* PlacePicsFlickrPhotoTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +71,7 @@
 		E5C6BED41766B20E00911686 /* RecentListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentListTableViewController.m; sourceTree = "<group>"; };
 		E5C6BED81766B5E600911686 /* TopPlacesFlickrTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesFlickrTableViewController.h; sourceTree = "<group>"; };
 		E5C6BED91766B5E700911686 /* TopPlacesFlickrTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPlacesFlickrTableViewController.m; sourceTree = "<group>"; };
-		E5C6BEDB1766B71300911686 /* TopPlacesFlickerPhotoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopPlacesFlickerPhotoTableViewController.xib; path = ../TopPlacesFlickerPhotoTableViewController.xib; sourceTree = "<group>"; };
+		E5C6BEDB1766B71300911686 /* GenericTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GenericTableView.xib; path = ../GenericTableView.xib; sourceTree = "<group>"; };
 		E5C6BF1A1766CE4A00911686 /* PlacePicsFlickrPhotoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePicsFlickrPhotoTableViewController.h; sourceTree = "<group>"; };
 		E5C6BF1B1766CE4A00911686 /* PlacePicsFlickrPhotoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePicsFlickrPhotoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,7 +123,7 @@
 			children = (
 				E5C6BED31766B20E00911686 /* RecentListTableViewController.h */,
 				E5C6BED41766B20E00911686 /* RecentListTableViewController.m */,
-				E5C6BEDB1766B71300911686 /* TopPlacesFlickerPhotoTableViewController.xib */,
+				E5C6BEDB1766B71300911686 /* GenericTableView.xib */,
 				E5C6BECE1766ABF300911686 /* FlickrPhotoTableViewController.h */,
 				E5C6BECF1766ABF300911686 /* FlickrPhotoTableViewController.m */,
 				E5C6BF1A1766CE4A00911686 /* PlacePicsFlickrPhotoTableViewController.h */,
@@ -242,7 +242,7 @@
 				E5C6BE9F1766A9FC00911686 /* Default@2x.png in Resources */,
 				E5C6BEA11766A9FC00911686 /* Default-568h@2x.png in Resources */,
 				E5C6BEB41766AA1B00911686 /* ImageViewController.xib in Resources */,
-				E5C6BEDC1766B71300911686 /* TopPlacesFlickerPhotoTableViewController.xib in Resources */,
+				E5C6BEDC1766B71300911686 /* GenericTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

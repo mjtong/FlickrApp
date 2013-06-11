@@ -27,12 +27,13 @@
       
         navConRecent = [[UINavigationController alloc] initWithRootViewController:recentListTableViewController];
         navConMain = [[UINavigationController alloc] initWithRootViewController:tpfTableViewController];
-    } 
+    }
+    
     self.tabBarController.viewControllers = @[navConMain,navConRecent];
     navConMain.title = @"Top Places";
     navConRecent.title = @"Recent";
-    navConMain.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:nil];
-    navConRecent.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:nil];
+    navConMain.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:0];
+    navConRecent.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

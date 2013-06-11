@@ -51,7 +51,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            PlacePicsFlickrPhotoTableViewController *placePicsViewController = [[PlacePicsFlickrPhotoTableViewController alloc] initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
+            PlacePicsFlickrPhotoTableViewController *placePicsViewController = [[PlacePicsFlickrPhotoTableViewController alloc] initWithNibName:@"GenericTableView" bundle:nil];
             
             [placePicsViewController performSelector:@selector(setPhotos:) withObject:photoItems];
             [placePicsViewController setTitle:[self titleForRow:indexPath.row]];
@@ -74,7 +74,7 @@
 {
     NSMutableArray* components = [[(self.photos[row][@"_content"]) componentsSeparatedByString:@", "] mutableCopy];
     [components removeObjectAtIndex:0];
-    return [components componentsJoinedByString:@", "]; // description because could be NSNull
+    return [components componentsJoinedByString:@", "];
 }
 
 // loads up a table view cell with the title and owner of the photo at the given row in the Model

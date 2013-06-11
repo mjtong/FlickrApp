@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
     self.title = @"Top Places";
-    
     self.photos = [FlickrFetcher topPlaces];
 
    

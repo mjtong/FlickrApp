@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FlickrPhotoTableViewController.h"
-@interface RecentListTableViewController : FlickrPhotoTableViewController
+#import "PlacePicsFlickrPhotoTableViewController.h"
+@interface RecentListTableViewController : PlacePicsFlickrPhotoTableViewController
 
 @end
