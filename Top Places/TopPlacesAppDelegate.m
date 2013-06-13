@@ -20,14 +20,14 @@
     UINavigationController *navConMain;
     UINavigationController *navConRecent;
 
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    //if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         TopPlacesFlickrTableViewController *tpfTableViewController = [[TopPlacesFlickrTableViewController alloc]initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];
         RecentListTableViewController *recentListTableViewController = [[RecentListTableViewController alloc]initWithNibName:@"TopPlacesFlickerPhotoTableViewController" bundle:nil];;
 
       
         navConRecent = [[UINavigationController alloc] initWithRootViewController:recentListTableViewController];
         navConMain = [[UINavigationController alloc] initWithRootViewController:tpfTableViewController];
-    }
+   // }
     
     self.tabBarController.viewControllers = @[navConMain,navConRecent];
     navConMain.title = @"Top Places";
